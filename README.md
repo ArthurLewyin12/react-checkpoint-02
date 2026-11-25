@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# React Checkpoint 02 - Player Cards
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my React Checkpoint 02 (Front End Development - React JS Fundamentals). It shows football player cards with React, react-bootstrap and the Iconsax icons.
 
-## Available Scripts
+## Files
 
-In the project directory, you can run:
+- `src/players.js`: an array of 6 players. Each one has a `name`, `team`, `nationality`, `jerseyNumber`, `age` and `imageUrl`. I also added the `position` of the player and a `teamColor` for the stripe under the photo.
+- `src/Player.js`: the `Player` component. It renders a react-bootstrap `Card` with all the attributes of one player. The props are destructured in the function parameters, and the styling of the card is inline (style objects).
+- `src/PlayersList.js`: imports `Player` and the players array, then uses `.map()` to display one card per player. The props are passed with the spread operator (`<Player {...player} />`).
+- `src/App.js`: the root component, with the page header and `PlayersList`
+- `src/App.css`: the page, the header and the hover effect of the cards (hover can't be done with inline styles)
 
-### `npm start`
+## Default props
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Each attribute has a default value, given directly in the destructuring of the props:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```js
+function Player({
+  name = "Unknown Player",
+  position = "Unknown position",
+  team = "Free Agent",
+  teamColor = "#15171A",
+  nationality = "Unknown",
+  jerseyNumber = "--",
+  age = "--",
+  imageUrl = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
+}) { ... }
+```
 
-### `npm test`
+I did it this way because the project uses React 19, and since React 19, `Player.defaultProps` doesn't work anymore on function components. Default values in the destructuring are what the React docs recommend now.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Design
 
-### `npm run build`
+- **Fonts**: Barlow Condensed for the title, the names and the numbers, and Barlow for the rest (Google Fonts). They look like the lettering you see in stadiums and on match programs.
+- **Colors**: an off-white background, black for the text and the numbers, and the color of each club on the stripe under the photo.
+- **Cards**: the photo takes the top of the card with the number in a black block, then the name, the position and a list with the team, nationality, age and number.
+- **Icons**: from Iconsax (`iconsax-reactjs`), in the "Linear" style.
+- The grid shows 3 cards per row on a computer, 2 on a tablet and 1 on a phone.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Photos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The photos come from Wikimedia Commons. They were taken by Bryan Berlin and are under the CC BY-SA 4.0 license:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [Lionel Messi](https://commons.wikimedia.org/wiki/File:Leo_Messi_Argentina_v_Egypt_7_July_2026-1.jpg)
+- [Kylian Mbappé](https://commons.wikimedia.org/wiki/File:Kylian_Mbappe_France_v_Senegal_16_June_2026-391_(cropped).jpg)
+- [Mohamed Salah](https://commons.wikimedia.org/wiki/File:Mohamed_Salah_Argentina_v_Egypt_7_July_2026-163_(cropped).jpg)
+- [Achraf Hakimi](https://commons.wikimedia.org/wiki/File:Achraf_Hakimi_Morocco_v_Norway_7_June_2026-32.jpg)
+- [Sadio Mané](https://commons.wikimedia.org/wiki/File:Sadio_Mane_France_v_Senegal_16_June_2026-450.jpg)
+- [Jude Bellingham](https://commons.wikimedia.org/wiki/File:Jude_Bellingham_England_v_Ghana_23_June_2026-061_(cropped).jpg)
 
-### `npm run eject`
+The default image is [Portrait Placeholder](https://commons.wikimedia.org/wiki/File:Portrait_Placeholder.png) by Greasemann (CC BY-SA 4.0).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## How to run it
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Then open http://localhost:3000 in the browser.

@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import { Container } from "react-bootstrap";
+import PlayersList from "./PlayersList";
+import players from "./players";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container className="py-5">
+        <header className="app-header">
+          <h1 className="app-title">Player Cards</h1>
+          <p className="app-meta">
+            Season 2026/27 · {players.length} players
+          </p>
+        </header>
+
+        <PlayersList />
+      </Container>
     </div>
   );
 }
